@@ -51,8 +51,6 @@ class Clearer implements ClearerContract
         if (method_exists($connection, 'getRedis')) {
             return $this->clearDelayedJobsOnRedis($connection, $queue);
         }
-
-        throw new \InvalidArgumentException('Queue Connection not supported');
     }
 
     protected function clearDelayedJobsOnRedis($connection, $queue) {
