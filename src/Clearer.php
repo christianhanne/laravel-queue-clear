@@ -39,7 +39,7 @@ class Clearer implements ClearerContract
         $count = 0;
 
         while ($job = $connection->pop($queue)) {
-            $job->delete();
+            $job->fail(new \Exception(__('Job has been canceled.')));
             $count++;
         }
 
